@@ -19,7 +19,7 @@ $con = mysqli_connect("10.5.101.102","root","test123","project");
 	}
 	else{
 		$row = mysqli_fetch_array($result);
-		$db_pw = $row["memberpwd"];
+		$db_pw = $row["memberpw"];
 		mysqli_close($con);
 
 		// DB 로 부터의 패스워드와 폼에 입력한 패스워드 비교
@@ -38,7 +38,7 @@ $con = mysqli_connect("10.5.101.102","root","test123","project");
 			session_start();
 			$_SESSION['userid'] = $row["memberid"];
 			$_SESSION['username'] = $row["membername"];
-			$_SESSION['userlevel'] = $row["memberphone"];
+			$_SESSION['userphone'] = $row["memberphone"];
 
 			echo("
 				<script>

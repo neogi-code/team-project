@@ -5,7 +5,8 @@
   $pw = $_POST[ 'pw' ];
   $name = $_POST[ 'name'];
   $phone = $_POST['phone'];
-  $pw_confirm = $_POST[ 'pw_confirm' ];
+  $join = $_POST['default'];
+//   $pw_confirm = $_POST[ 'pw_confirm' ];
   if ( !is_null( $id ) ) {
     $conn = mysqli_connect( '10.5.101.102', 'root', 'test123', 'project' );
     $sql = "select * from membertbl where memberid='$id'";
@@ -15,7 +16,7 @@
     if ($num_match) {
         echo "<script>alert('사용자가 이미 존재합니다'); history.go(-1);</script>";
     }else {
-        $register = "insert into membertbl values ('$id','$name','$phone','$pw')";
+        $register = "insert into membertbl values ('$id','$pw','$name','$phone','$join')";
         $join_result = mysqli_query($conn,$register);
 
         if ($join_result){
