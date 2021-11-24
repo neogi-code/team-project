@@ -37,12 +37,13 @@
             session_start();
             $userid = $_SESSION["userid"];
             $conn = mysqli_connect( '10.5.101.102', 'root', 'test123', 'project' );
-            $sql = "select 'join' from membertbl where memberid='$userid'";
+            $sql = "select memberjoin from membertbl where memberid='$userid'";
             $result = mysqli_query($conn,$sql);
             $row = mysqli_fetch_array($result);
-            // echo $row['join'];
+            $join = $row['memberjoin'];
             if($join == 0){
                 echo "<p>결제 금액: ".$fee."(월 결제금액) + 11,000(설치비)</p>";
+                mysqli_query($conn,"update membertbl set memberjoin = 1 where memberid = '$userid'");
             }else{
                 echo "<p>결제 금액: ".$fee."(월 결제금액)";
             }
